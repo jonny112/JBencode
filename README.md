@@ -9,7 +9,7 @@ This implementation aims to provide
 
 ## Overview
 BencodeObject
-- super-class for all format specific types (see below)
+- super-class for all format specific types (see model below)
 - provides utility functions for accessing and manipulating a document without casting
 
 Model classes
@@ -55,7 +55,11 @@ try (BencodeArrayWriter writer = new BencodeArrayWriter()) {
 ```
 Deserialization
 ```java
-BencodeReader reader = new BencodeBufferReader(ByteBuffer.wrap("d7:entriesl7:Entry 1i1234ed1:xi100e1:yi200ee7:Entry 4e6:numberi56789e5:title12:Hello World!e".getBytes()));
+BencodeReader reader = new BencodeBufferReader(
+	ByteBuffer.wrap(
+		"d7:entriesl7:Entry 1i1234ed1:xi100e1:yi200ee7:Entry 4e6:numberi56789e5:title12:Hello World!e".getBytes()
+	)
+);
 BencodeObject document = reader.read();
 System.out.println(document.get("title").getString());
 System.out.println(document.get("number").getValue());

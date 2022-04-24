@@ -86,3 +86,8 @@ Dictionary(3)
   [number]: Integer(56789)
   [title]: String(12)
 ```
+## Package
+In lack of a specific domain the top-level package name for this project is derived the following way (Pyhton):
+```python
+"h" + hashlib.sha1("jonny112@github.com".encode()).hexdigest()[-12:]
+```

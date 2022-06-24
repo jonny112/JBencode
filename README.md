@@ -8,32 +8,32 @@ This implementation aims to provide
 - strict parsing with transparent error reporting to aid debugging
 
 ## Overview
-BencodeObject
+**BencodeObject**
 - super-class for all format specific types (see model below)
-- provides utility functions for accessing and manipulating a document without casting
+- provides utility functions for accessing and manipulating parts of a document without casting
 
 Model classes
-- BencodeDictionary (string-key -> value/object map)
-- BencodeList (value/object array)
-- BencodeInteger (numeric value)
-- BencodeString (byte array, possibly characters)
+- **BencodeDictionary** (string-key -> value/object map)
+- **BencodeList** (value/object array)
+- **BencodeInteger** (numeric value)
+- **BencodeString** (byte array, possibly characters)
 
 Buffer I/O
-- BencodeArrayWriter
-- BencodeBufferReader
-- BencodeBufferWriter
+- **BencodeArrayWriter**
+- **BencodeBufferReader**
+- **BencodeBufferWriter**
 
 Stream I/O
-- BencodeStreamReader
-- BencodeStreamWriter
+- **BencodeStreamReader**
+- **BencodeStreamWriter**
 
 Utilities
-- BencodeStringifier
+- **BencodeStringifier**
 
 See JavaDoc for full documentation.
 
 ## Examples
-Serialization
+#### Serialization
 ```java
 byte[] output;	
 try (BencodeArrayWriter writer = new BencodeArrayWriter()) {
@@ -53,7 +53,7 @@ try (BencodeArrayWriter writer = new BencodeArrayWriter()) {
 	output = writer.toByteArray();
 }
 ```
-Deserialization
+#### Deserialization
 ```java
 BencodeReader reader = new BencodeBufferReader(
 	ByteBuffer.wrap(
@@ -70,7 +70,7 @@ Hello World!
 56789
 100
 ```
-Debugging
+#### Debugging
 ```java
 System.out.println(document.toString());
 ```
@@ -87,7 +87,7 @@ Dictionary(3)
   [title]: String(12)
 ```
 ## Package
-In lack of a specific domain the top-level package name for this project is derived the following way (Pyhton):
+In lack of a specific domain the top-level package name for this project is derived the following way (Python):
 ```python
 "h" + hashlib.sha1("jonny112@github.com".encode()).hexdigest()[-12:]
 ```
